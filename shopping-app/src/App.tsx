@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Greeter from './components/Greater';
+import ShoppingList from './components/ShoppingList';
+import ShoppingListForm from './components/ShoppingItemForm';
+import  Item from './models/item'
 
 function App() {
+
+  const [items, setItems] = useState<Item[]>([]); // It starts as an empty array but the type is Item 
+
+/*   const items = [
+    { id: 1, product: "Lemon", quantity: 3 },
+    { id: 2, product: "Chicken", quantity: 2 },
+  ]; */
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     {<ShoppingList items ={items}/> }
+     <ShoppingListForm/>
     </div>
   );
 }
