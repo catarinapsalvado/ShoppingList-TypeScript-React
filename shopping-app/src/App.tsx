@@ -13,15 +13,19 @@ function App() {
     console.log('Made to the app component');
    setItems([...items,{id: getId(), product, quantity}])
   }
-/*   const items = [
-    { id: 1, product: "Lemon", quantity: 3 },
-    { id: 2, product: "Chicken", quantity: 2 },
-  ]; */
+
+  const completeShopping =(itemNameToDelete: string): void => {
+    setItems(items.filter((itemName) => {
+      return itemName.product !== itemNameToDelete
+    }))
+  }
 
   return (
-    <div>
-     {<ShoppingList items ={items}/> }
-     <ShoppingListForm onAddItem={addItem}/>
+    <div className='App'>
+      <div className='header'> <h1>Shopping List</h1></div>
+     {<ShoppingList items ={items} completeShopping ={completeShopping}/> }
+     <ShoppingListForm onAddItem={addItem} />
+     
     </div>
   );
 }
